@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window  
+    x:Class="App2.MainWindow"  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+    xmlns:local="using:App2"  
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+    mc:Ignorable="d"  
+    Title="App2" 
+    >  
+    <Grid Loaded="OnLoad" Background="{ThemeResource MyPageBackgroundBrush}" KeyDown="OnKeyDown" PointerWheelChanged="OnPointerWheelChanged">
+        <!-- Grid の行定義 -->  
+        <Grid.RowDefinitions>  
+            <RowDefinition Height="Auto" />  
+            <!-- ヘッダー：高さ固定 -->  
+            <RowDefinition Height="*" />  
+            <!-- メイン：余りを全部使う -->  
+            <RowDefinition Height="Auto" />  
+            <!-- フッター：高さ固定 -->  
+        </Grid.RowDefinitions>  
+
+        <Grid Grid.Row="0" Name="Header" Margin="0,50,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Center">  
+            <Grid.ColumnDefinitions>  
+                <ColumnDefinition Width="*" />  
+                <ColumnDefinition Width="*" />  
+                <ColumnDefinition Width="*" />  
+            </Grid.ColumnDefinitions>  
+            <TextBlock Grid.Column="2" Margin="0,0,50,0" Name="Clock" Text="00:00" FontSize="24" HorizontalAlignment="Right"/>  
+        </Grid>  
+
+        <StackPanel Grid.Row="1" Orientation="Vertical">  
+            <ScrollViewer Name="Scroller" HorizontalAlignment="Stretch" Height="350" VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Hidden">  
+                <StackPanel x:Name="ImageStack" Margin="30,10,70,10" Orientation="Horizontal" />  
+            </ScrollViewer>  
+            <TextBlock Name="Title" FontFamily="Segoe UI" FontSize="40" TextAlignment="Center"></TextBlock>  
+            <TextBlock Name="Subtitle" Margin="20,0,0,0" FontFamily="Segoe UI" FontSize="30" TextAlignment="Center"></TextBlock>  
+        </StackPanel>  
+
+        <StackPanel Grid.Row="2">  
+            <!-- 区切り線 -->  
+            <Border Height="1" Margin="20,10,20,10" Background="Gray" />  
+
+            <!-- フッター本体 -->  
+            <Grid Name="Footer" Margin="20,0,20,10" HorizontalAlignment="Stretch">  
+                <Grid.ColumnDefinitions>  
+                    <ColumnDefinition Width="*" />  
+                    <ColumnDefinition Width="*" />  
+                </Grid.ColumnDefinitions>  
+                <TextBlock Grid.Column="0" Text="Kaisei Switch2, 2025 Computer Club" Foreground="Gray" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Border Width="1" Margin="10,0,10,0" Background="Gray" />
+                    <SymbolIcon Symbol="Help"/>
+                    <TextBlock Text="操作方法" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <ImageIcon Source="/Assets/Enter.png" Height="30" Margin="15,0,5,0"/>
+                    <TextBlock Text=": 起動" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <ImageIcon Source="/Assets/Arrow.png" Height="30" Margin="15,0,5,0"/>
+                    <TextBlock Text=": 選択" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>  
+        </StackPanel>  
+    </Grid>  
+</Window>
